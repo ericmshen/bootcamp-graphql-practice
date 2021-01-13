@@ -38,6 +38,8 @@ module.exports = gql`
     bestSeller: Boolean
     author: Author!
     publisher: Publisher!
+    # authorId: ID!
+    # publisherId: ID!
   }
   input AddBookInput {
     title: String!
@@ -45,8 +47,10 @@ module.exports = gql`
     numPages: Int!
     datePublished: Date
     bestSeller: Boolean
-    author: AddAuthorInput!
-    publisher: AddPublisherInput!
+    # author: AddAuthorInput!
+    # publisher: AddPublisherInput!
+    authorId: ID!
+    publisherId: ID!
   }
   type Publisher {
     id: ID!
