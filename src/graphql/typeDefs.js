@@ -6,11 +6,13 @@ module.exports = gql`
     authorById(id: ID!): Author!
     bookById(id: ID!): Book!
     publisherById(id: ID!): Publisher!
+    booksByAuthor(id: ID!): [Book!]!
+    booksByPublisher(id: ID!): [Book!]!
   }
   type Mutation {
-    addAuthor(input: AddAuthorInput): Author!
-    addPublisher(input: AddPublisherInput): Publisher!
-    addBook(input: AddBookInput): Book!
+    addAuthor(input: AddAuthorInput!): Author!
+    addPublisher(input: AddPublisherInput!): Publisher!
+    addBook(authorId: ID!, publisherId: ID!, input: AddBookInput!): Book!
   }
   type Author {
     id: ID!
