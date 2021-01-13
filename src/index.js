@@ -56,7 +56,6 @@ const startServer = async () => {
   // !! Add other server endpoints here !!
   // ------------------------------
 
-
   // ------------------------------
 
   // 404 endpoints
@@ -69,7 +68,7 @@ const startServer = async () => {
 
   server.listen(config.port, () => {
     httpServerListening = true
-    console.log(`🚀  Server ready at http://localhost:${config.port}${graphqlServer.graphqlPath}`)
+    console.log(`Server ready at http://localhost:${config.port}${graphqlServer.graphqlPath}`)
   })
 }
 

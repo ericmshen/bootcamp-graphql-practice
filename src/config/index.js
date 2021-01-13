@@ -3,7 +3,7 @@ module.exports = {
   port: process.env.PORT || 5000,
 
   // Create new random token whenever you start a new project
-  tokenSecret: process.env.TOKEN_SECRET || 'reughdjsasdkpmasipkmsdfadf',
+  tokenSecret: process.env.TOKEN_SECRET || 'hijghuffjhhggcfhdgfcvbjkkoig',
 
   db: {
     max_connections: Number.isNaN(Number(process.env.DB_MAX_CONNECTIONS))
