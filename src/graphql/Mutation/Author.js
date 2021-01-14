@@ -6,38 +6,43 @@ const addAuthor = async (obj, {
     firstName, lastName, age, email, numBooksPublished, address,
   },
 }) => {
-  const existingAddress = await Address.query().findOne({
-    street: address.street,
-    city: address.city,
-    state: address.state,
-    zip: address.zip,
-  })
-  if (!existingAddress) {
-    const newAddress = await Address.query().insert({
+  try {
+    const existingAddress = await Address.query().findOne({
       street: address.street,
       city: address.city,
       state: address.state,
       zip: address.zip,
     })
+    if (!existingAddress) {
+      const newAddress = await Address.query().insert({
+        street: address.street,
+        city: address.city,
+        state: address.state,
+        zip: address.zip,
+      })
+      const author = await Author.query().insert({
+        firstName,
+        lastName,
+        age,
+        numBooksPublished,
+        email,
+        addressId: newAddress.id,
+      }).returning('*')
+      return author
+    }
     const author = await Author.query().insert({
       firstName,
       lastName,
       age,
       numBooksPublished,
       email,
-      addressId: newAddress.id,
-    })
+      addressId: existingAddress.id,
+    }).returning('*')
+    console.log('new author')
     return author
+  } catch (err) {
+    console.log(err)
   }
-  const author = await Author.query().insert({
-    firstName,
-    lastName,
-    age,
-    numBooksPublished,
-    email,
-    addressId: existingAddress.id,
-  })
-  return author
 }
 
 const resolver = {
