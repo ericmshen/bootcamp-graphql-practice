@@ -38,10 +38,9 @@ const addAuthor = async (obj, {
       email,
       addressId: existingAddress.id,
     }).returning('*')
-    console.log('new author')
     return author
   } catch (err) {
-    console.log(err)
+    throw new Error("Couldn't insert author")
   }
 }
 
