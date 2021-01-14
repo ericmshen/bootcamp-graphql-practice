@@ -27,7 +27,7 @@ const books = async ({ id }, params, context) => {
   return b
 }
 
-const address = async ({ addressId }) => {
+const address = async ({ addressId }, params, context) => {
   const a = await Address.query().findOne('id', addressId)
   return a
 }

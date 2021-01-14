@@ -25,8 +25,9 @@ module.exports = gql`
     age: Int!
     email: String!
     numBooksPublished: Int!
-    address: Address!
-    books: [Book!]!
+    addressId: ID!
+    address: Address
+    books: [Book!]
   }
   input AddAuthorInput {
     firstName: String!
@@ -42,18 +43,18 @@ module.exports = gql`
     language: String!
     numPages: Int!
     datePublished: Date
-    bestSeller: Boolean
-    author: Author!
-    publisher: Publisher!
-    # authorId: ID!
-    # publisherId: ID!
+    bestseller: Boolean
+    authorId: ID!
+    author: Author
+    publisherId: ID!
+    publisher: Publisher
   }
   input AddBookInput {
     title: String!
     language: String!
     numPages: Int!
     datePublished: Date
-    bestSeller: Boolean
+    bestseller: Boolean
     # author: AddAuthorInput!
     # publisher: AddPublisherInput!
     authorId: ID!
@@ -64,7 +65,7 @@ module.exports = gql`
     company: String!
     phoneNumber: String!
     numBooksPublished: Int!
-    address: Address!
+    addressId: ID!
   }
   input AddPublisherInput {
     company: String!
