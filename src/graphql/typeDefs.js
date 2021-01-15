@@ -17,6 +17,7 @@ module.exports = gql`
     addPublisher(input: AddPublisherInput!): Publisher!
     addBook(input: AddBookInput!): Book!
     addAddress(input: AddAddressInput!): Address!
+    login(input: RegisterInput!): AuthReturn!
   }
   type Author {
     id: ID!
@@ -85,6 +86,14 @@ module.exports = gql`
     city: String!
     state: String!
     zip: String!
+  }
+  type AuthReturn {
+    token: String!
+    user: User!
+  }
+  input RegisterInput { 
+    email: String!
+    password: String!
   }
   scalar Date
 `
