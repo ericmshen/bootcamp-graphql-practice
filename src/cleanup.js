@@ -36,7 +36,6 @@ const initializeSafeCleanup = () => {
     process.kill(process.pid, 'SIGUSR2')
   })
 
-
   // Ecountered error, failure
   process.once('uncaughtException', async e => {
     console.log('Uncaught exception: ')

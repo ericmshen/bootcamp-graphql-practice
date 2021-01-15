@@ -87,6 +87,11 @@ module.exports = gql`
     state: String!
     zip: String!
   }
+  type User {
+    id: ID!
+    email: String!
+    password: String!
+  }
   type AuthReturn {
     token: String!
     user: User!
